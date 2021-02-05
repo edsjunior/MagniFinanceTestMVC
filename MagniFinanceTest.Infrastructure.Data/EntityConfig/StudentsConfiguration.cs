@@ -13,9 +13,6 @@ namespace MagniFinanceTest.Infrastructure.Data.EntityConfig
 			Property(c => c.CourseId)
 				.IsRequired();
 
-			HasRequired(c => c.StudentSubjects)
-				.WithMany()
-				.HasForeignKey(c => c.SubjectsStudentId);
 		}
 		
 	}

@@ -11,6 +11,7 @@ namespace MagniFinanceTest.Infrastructure.Data.EntityConfig
 			HasKey(c => c.StudentSubjectsId);
 			Property(c => c.CourseSubjectId)
 				.IsRequired();
+
 			Property(c => c.StudentId)
 				.IsRequired();
 

@@ -14,7 +14,7 @@ namespace MagniFinanceTest.Domain.Entities
 		public int TeacherId { get; set; }
 		public virtual Teacher Teacher { get; set; }
 		public int CourseId { get; set; }
-		public Course Course { get; set; }
+		public virtual Course Course { get; set; }
 
 		public virtual IEnumerable<StudentSubjects> StudentSubjects { get; set; }
 

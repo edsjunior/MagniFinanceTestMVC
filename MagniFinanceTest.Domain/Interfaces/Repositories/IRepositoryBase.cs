@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace MagniFinanceTest.Domain.Interfaces
+namespace MagniFinanceTest.Domain.Interfaces.Repositories
 {
 	public interface IRepositoryBase <TEntity> where TEntity: class
 	{

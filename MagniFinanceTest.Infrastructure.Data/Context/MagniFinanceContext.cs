@@ -16,8 +16,14 @@ namespace MagniFinanceTest.Infrastructure.Data.Context
 		}
 		public DbSet<Course> Courses { get; set; }
 		public DbSet<CourseSubjects> CourseSubjects { get; set; }
-		public DbSet<Person> Person { get; set; }
-		public DbSet<StudentSubjects> StudentSubjects { get; set; }
+		public DbSet<Person> Persons { get; set; }
+
+		public DbSet<Student> Students { get; set; }
+
+		public DbSet<Teacher> Teachers { get; set; }
+		public DbSet<StudentSubjects> StudentsSubjects { get; set; }
+
+		public DbSet <Grade> Grades { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -60,6 +66,15 @@ namespace MagniFinanceTest.Infrastructure.Data.Context
 				}
 			}
 			return base.SaveChanges();
+		}
+
+		private void FixEfProviderServicesProblem()
+		{
+			// The Entity Framework provider type 'System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer'
+			// for the 'System.Data.SqlClient' ADO.NET provider could not be loaded. 
+			// Make sure the provider assembly is available to the running application. 
+			// See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
+			var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
 		}
 	}
 }

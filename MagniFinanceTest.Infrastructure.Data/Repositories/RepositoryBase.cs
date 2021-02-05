@@ -1,4 +1,4 @@
-﻿using MagniFinanceTest.Domain.Interfaces;
+﻿using MagniFinanceTest.Domain.Interfaces.Repositories;
 using MagniFinanceTest.Infrastructure.Data.Context;
 using System;
 using System.Collections.Generic;

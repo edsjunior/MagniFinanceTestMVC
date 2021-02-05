@@ -11,8 +11,8 @@ namespace MagniFinanceTest.Domain.Entities
 		public int RegistrationNumber { get; set; }
 		public int CourseId { get; set; }
 		public Course Course { get; set; }
-		public int SubjectsStudentId { get; set; }
-		public virtual StudentSubjects StudentSubjects { get; set; }
+		/*public int StudentSubjectsId { get; set; }
+		public virtual StudentSubjects StudentSubjects { get; set; }*/
 
 	}
 }
