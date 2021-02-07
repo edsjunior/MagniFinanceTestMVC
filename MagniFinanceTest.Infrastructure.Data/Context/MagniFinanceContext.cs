@@ -10,7 +10,7 @@ namespace MagniFinanceTest.Infrastructure.Data.Context
 	public class MagniFinanceContext : DbContext
 	{
 		public MagniFinanceContext()
-			: base("MagniFinance")
+			: base("MagniFinanceDB")
 		{
 
 		}
