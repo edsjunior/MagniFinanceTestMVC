@@ -5,7 +5,8 @@ Developer task for MagniFinance company:
 ### Instructions
 
 - execute in Package Manager Console:
-  - Update-Database
+  - Update-Database in project MagniFinanceTest.Infrastructure.Data
+  - Using (localdb)\MSSQLLocalDB
 
 - View Courses:
   List the courses and show the number of teachers, students and average of their grades for each course 
