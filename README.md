@@ -4,10 +4,10 @@ Developer task for MagniFinance company:
 
 ### Instructions
 
-- execute in Package Manager Console:
-  - Build solution
+- Build solution
+- Execute in Package Manager Console:
   - Update-Database in project MagniFinanceTest.Infrastructure.Data
-  - Using (localdb)\MSSQLLocalDB
+- Using (localdb)\MSSQLLocalDB
 ### Possible errors
 - When use Visual Studio 2019 first build maybe show the error:
   - Could not find a part of the path … bin\roslyn\csc.exe
