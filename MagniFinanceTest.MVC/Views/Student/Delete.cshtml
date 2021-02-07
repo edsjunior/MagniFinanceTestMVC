@@ -1,72 +1,63 @@
 ﻿@model MagniFinanceTest.MVC.ViewModels.StudentViewModel
 
+
 @{
-    ViewBag.Title = "Delete";
+	ViewData["Title"] = "Delete - " + Model.Name;
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h4 style="padding-top: 30px">@ViewData["Title"] </h4>
+<h5>Are you sure you want to delete this?</h5>
+<hr />
 <div>
-    <h4>StudentViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Birthday)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Birthday)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Birthday)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.RegistrationNumber)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RegistrationNumber)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.RegistrationNumber)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.RegistrationNumber)
-        </dd>
+		<dt>
+			@Html.DisplayName("Course")
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseId)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.Course.Name)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Active)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Active)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseId)
-        </dd>
+	</dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StudentSubjectsId)
-        </dt>
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.StudentSubjectsId)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+		<div class="form-actions no-color">
+			<input type="submit" value="Delete" class="btn btn-dark" />
+			<a href="javascript: history.go(-1)" class="btn btn-info">Go Back</a>
+		</div>
+	}
 </div>

@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace MagniFinanceTest.Domain.Entities
 {
-	public class Student : Person
+	public class Student
 	{
+		public int StudentId { get; set; }
+		public string Name { get; set; }
+		public DateTime Birthday { get; set; }
 		public int RegistrationNumber { get; set; }
 		public int CourseId { get; set; }
-		public Course Course { get; set; }
-		/*public int StudentSubjectsId { get; set; }
-		public virtual StudentSubjects StudentSubjects { get; set; }*/
+		public virtual Course Course { get; set; }
+		public bool Active { get; set; }
+		public DateTime Created { get; set; }
+
 
 	}
 }

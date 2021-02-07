@@ -1,48 +1,47 @@
 ﻿@model MagniFinanceTest.MVC.ViewModels.StudentSubjectsViewModel
 
 @{
-    ViewBag.Title = "Delete";
+	ViewData["Title"] = "Delete - " + Model.Student.Name;
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h4 style="padding-top: 30px">@ViewData["Title"] </h4>
+<h5>Are you sure you want to delete this?</h5>
+<hr />
 <div>
-    <h4>StudentSubjectsViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseSubjectId)
-        </dt>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayName("Course")
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseSubjectId)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.CourseSubjects.Name)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StudentId)
-        </dt>
+		<dt>
+			@Html.DisplayName("Student")
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StudentId)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Student.Name)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Grade)
-        </dt>
+		<dt>
+			@Html.DisplayName("Grade Value")
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Grade)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Grade.GradeValue)
+		</dd>
 
-    </dl>
+	</dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+		<div class="form-actions no-color">
+			<input type="submit" value="Delete" class="btn btn-dark" />
+			<a href="javascript: history.go(-1)" class="btn btn-info">Go Back</a>
+		</div>
+	}
 </div>

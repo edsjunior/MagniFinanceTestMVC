@@ -2,6 +2,7 @@
 using MagniFinanceTest.Domain.Entities;
 using MagniFinanceTest.Domain.Interfaces.Services;
 using MagniFinanceTest.Domain.Services;
+using System.Collections.Generic;
 
 namespace MagniFinanceTest.Application
 {
@@ -14,5 +15,16 @@ namespace MagniFinanceTest.Application
 		{
 			_studentSubject = studentsSubjects;
 		}
+
+		public IEnumerable<StudentSubjects> FindBySubjectId(int id)
+		{
+			return _studentSubject.FindBySubjectId(id);
+		}
+
+		public IEnumerable<StudentSubjects> FindByStudentId(int id)
+		{
+			return _studentSubject.FindByStudentId(id);
+		}
+
 	}
 }

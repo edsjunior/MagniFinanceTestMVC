@@ -16,14 +16,12 @@ namespace MagniFinanceTest.Infrastructure.Data.Context
 		}
 		public DbSet<Course> Courses { get; set; }
 		public DbSet<CourseSubjects> CourseSubjects { get; set; }
-		public DbSet<Person> Persons { get; set; }
-
 		public DbSet<Student> Students { get; set; }
 
 		public DbSet<Teacher> Teachers { get; set; }
 		public DbSet<StudentSubjects> StudentsSubjects { get; set; }
 
-		public DbSet <Grade> Grades { get; set; }
+		public DbSet<Grade> Grades { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -44,7 +42,6 @@ namespace MagniFinanceTest.Infrastructure.Data.Context
 
 			modelBuilder.Configurations.Add(new CourseConfiguration());
 			modelBuilder.Configurations.Add(new CourseSubjectsConfiguration());
-			modelBuilder.Configurations.Add(new PersonConfiguration());
 			modelBuilder.Configurations.Add(new StudentsConfiguration());
 			modelBuilder.Configurations.Add(new StudentsSubjectsConfiguration());
 			modelBuilder.Configurations.Add(new TeacherConfiguration());

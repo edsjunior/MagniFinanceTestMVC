@@ -8,7 +8,7 @@ namespace MagniFinanceTest.Domain.Entities
 {
 	public class Grade
 	{
-		public int Id { get; set; }
+		public int GradeId { get; set; }
 		public int GradeValue { get; set; }
 
 

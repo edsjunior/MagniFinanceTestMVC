@@ -15,7 +15,6 @@ namespace MagniFinanceTest.MVC.AutoMapper
 		{
 			Mapper.CreateMap<Course, CourseViewModel>();
 			Mapper.CreateMap<CourseSubjects, CourseSubjectsViewModel>();
-			Mapper.CreateMap<Person, PersonViewModel>();
 			Mapper.CreateMap<Student, StudentViewModel>();
 			Mapper.CreateMap<StudentSubjects, StudentSubjectsViewModel>();
 			Mapper.CreateMap<Teacher, TeacherViewModel>();

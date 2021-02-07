@@ -15,5 +15,11 @@ namespace MagniFinanceTest.Domain.Services
 			_teacherRepository = teacherRepository;
 		}
 
+		public int CountTeachersByCourse(int id)
+		{
+			return _teacherRepository.CountTeachersByCourse(id);
+		}
+
+		
 	}
 }

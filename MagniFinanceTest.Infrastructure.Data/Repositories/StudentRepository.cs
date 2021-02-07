@@ -11,5 +11,17 @@ namespace MagniFinanceTest.Infrastructure.Data.Repositories
 		{
 			return Db.Students.Where(p => p.Name == name);
 		}
+
+		public double AverageStudent(int id)
+		{
+			return Db.StudentsSubjects.Where(c => c.StudentId == id).Average(c => c.Grade.GradeValue);
+		}
+
+		public int CountStudentsByCourse(int id)
+		{
+			return Db.Students.Count(c => c.CourseId == id);
+		}
+
+		
 	}
 }

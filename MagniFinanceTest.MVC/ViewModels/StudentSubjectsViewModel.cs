@@ -11,8 +11,9 @@ namespace MagniFinanceTest.MVC.ViewModels
 		public int CourseSubjectId { get; set; }
 		[Required(ErrorMessage = "Student is required")]
 		public int StudentId { get; set; }
-		public decimal Grade { get; set; }
-		public CourseSubjectsViewModel CourseSubjects { get; set; }
-		public StudentViewModel Student { get; set; }
+		public int GradeId { get; set; }
+		public virtual CourseSubjectsViewModel CourseSubjects { get; set; }
+		public virtual StudentViewModel Student { get; set; }
+		public virtual GradeViewModel Grade { get; set; }
 	}
 }

@@ -1,33 +1,36 @@
 ﻿@model IEnumerable<MagniFinanceTest.MVC.ViewModels.GradeViewModel>
 
 @{
-    ViewBag.Title = "Index";
+	ViewData["Title"] = "Grades";
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	<a href="@Url.Action("Create")" class="btn btn-info">Create New</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GradeValue)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-hover">
+	<thead class="thead-dark">
+		<tr>
+			<th>
+				@Html.DisplayName("Grade Value")
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.GradeValue)
+			</td>
+			<td class="text-right">
+				<a href="@Url.Action("Edit", new { id = item.GradeId })" class="btn btn-warning"><spam class="fa fa-pencil-alt"></spam></a>
+				<a href="@Url.Action("Details", new { id = item.GradeId })" class="btn btn-info"><spam class="fa fa-info-circle"></spam></a>
+				<a href="@Url.Action("Delete", new { id = item.GradeId })" class="btn btn-danger"><spam class="fa fa-trash"></spam></a>
+			</td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GradeValue)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+		</tr>
+	}
 
 </table>

@@ -7,8 +7,13 @@ namespace MagniFinanceTest.Infrastructure.Data.EntityConfig
 	{
 		public TeacherConfiguration()
 		{
+
+			HasKey(c => c.TeacherId);
+			
 			Property(c => c.Salary)
 				.IsRequired();
+
+			
 		}
 	}
 }

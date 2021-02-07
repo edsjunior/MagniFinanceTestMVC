@@ -4,5 +4,6 @@ namespace MagniFinanceTest.Domain.Interfaces.Services
 {
 	public interface ICourseService : IServiceBase<Course>
 	{
+	
 	}
 }

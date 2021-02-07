@@ -21,5 +21,17 @@ namespace MagniFinanceTest.Application
 		{
 			return _studentService.FindByName(name);
 		}
+
+		public double AverageStudent(int id)
+		{
+			return _studentService.AverageStudent(id);
+		}
+
+		public int CountStudentsByCourse(int id)
+		{
+			return _studentService.CountStudentsByCourse(id);
+		}
+
+		
 	}
 }

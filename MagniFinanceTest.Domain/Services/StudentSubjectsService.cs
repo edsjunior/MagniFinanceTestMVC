@@ -14,5 +14,15 @@ namespace MagniFinanceTest.Domain.Services
 		{
 			_studentSubjectsRepository = studentSubjectsRepository;
 		}
+		public IEnumerable<StudentSubjects> FindBySubjectId(int id)
+		{
+			return _studentSubjectsRepository.FindBySubjectId(id);
+		}
+
+		public IEnumerable<StudentSubjects> FindByStudentId(int id)
+		{
+			return _studentSubjectsRepository.FindByStudentId(id);
+		}
+		
 	}
 }

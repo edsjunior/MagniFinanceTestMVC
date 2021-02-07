@@ -6,5 +6,11 @@ namespace MagniFinanceTest.Domain.Interfaces.Services
 	public interface IStudentService : IServiceBase<Student>
 	{
 		IEnumerable<Student> FindByName(string name);
+
+		double AverageStudent(int id);
+
+		int CountStudentsByCourse(int id);
+
+		
 	}
 }

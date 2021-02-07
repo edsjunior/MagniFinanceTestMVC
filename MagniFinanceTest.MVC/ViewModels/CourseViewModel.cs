@@ -23,5 +23,11 @@ namespace MagniFinanceTest.MVC.ViewModels
 		public DateTime Created { get; set; }
 
 		public virtual IEnumerable<CourseSubjectsViewModel> CourseSubjects { get; set; }
+
+		public virtual int CountStudents { get; set; }
+
+		public virtual int CountTeachers { get; set; }
+		public virtual double CourseAverage { get; set; }
+
 	}
 }

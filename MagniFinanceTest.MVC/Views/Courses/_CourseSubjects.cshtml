@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MagniFinanceTest.MVC.ViewModels.CourseSubjectsViewModel>
+<div style="padding-top: 20px">
+	<div>
+		<hr />
+		<h4>Course Subjects</h4>
+	</div>
+	@if (Model != null)
+	{
+		<table class="table table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.Name)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Description)
+					</th>
+					<th>
+						@Html.DisplayName("Teacher")
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Description)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Teacher.Name)
+					</td>
+					<td class="text-right">
+						<a href="@Url.Action("Edit", "CourseSubjects",  new { id = item.CourseSubjectsId })" class="btn btn-warning"><spam class="fa fa-pencil-alt"></spam></a>
+						<a href="@Url.Action("Details", "CourseSubjects", new { id = item.CourseSubjectsId })" class="btn btn-info"><spam class="fa fa-user-graduate"></spam></a>
+						<a href="@Url.Action("Delete", "CourseSubjects", new { id = item.CourseSubjectsId })" class="btn btn-danger"><spam class="fa fa-trash"></spam></a>
+					</td>
+				</tr>
+			}
+
+		</table>
+	}
+</div>

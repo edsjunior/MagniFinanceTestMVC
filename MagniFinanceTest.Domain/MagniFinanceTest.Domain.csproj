@@ -34,7 +34,6 @@
     <Compile Include="Entities\Course.cs" />
     <Compile Include="Entities\CourseSubjects.cs" />
     <Compile Include="Entities\Grade.cs" />
-    <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Interfaces\Repositories\ICourseRepository.cs" />

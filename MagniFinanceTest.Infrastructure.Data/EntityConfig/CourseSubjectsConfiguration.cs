@@ -18,6 +18,10 @@ namespace MagniFinanceTest.Infrastructure.Data.EntityConfig
 				.WithMany()
 				.HasForeignKey(c => c.CourseId);
 
+			HasRequired(c => c.Teacher)
+				.WithMany()
+				.HasForeignKey(c => c.TeacherId);
+
 		}
 	}
 }

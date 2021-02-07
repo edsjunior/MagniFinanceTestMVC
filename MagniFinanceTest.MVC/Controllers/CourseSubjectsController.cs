@@ -13,14 +13,18 @@ namespace MagniFinanceTest.MVC.Controllers
         private readonly ICourseSubjectsAppService _courseSubjectsApp;
         private readonly ICourseAppService _courseApp;
         private readonly ITeacherAppService _teacherApp;
+        private readonly IStudentSubjectsAppService _studentSubject;
 
         public CourseSubjectsController(ICourseSubjectsAppService courseSubjectsApp, 
             ICourseAppService courseApp,
-            ITeacherAppService teacherApp)
+            ITeacherAppService teacherApp,
+            IStudentSubjectsAppService studentSubjectApp
+            )
         {
             _courseSubjectsApp = courseSubjectsApp;
             _courseApp = courseApp;
             _teacherApp = teacherApp;
+            _studentSubject = studentSubjectApp;
 
 
         }
@@ -36,14 +40,16 @@ namespace MagniFinanceTest.MVC.Controllers
         {
             var courseSubjects = _courseSubjectsApp.GetById(id);
             var courseSubjectsViewModel = Mapper.Map<CourseSubjects, CourseSubjectsViewModel>(courseSubjects);
+            courseSubjectsViewModel.StudentSubjects = GetStudentsSubjects(id);
+
             return View(courseSubjectsViewModel);
         }
 
         // GET: CourseSubjectsSubjects/Create
         public ActionResult Create()
         {
-            ViewBag.CourseId = new SelectList(_courseApp.GetAll(), "CourseId", "Name");
-            ViewBag.TeacherId = new SelectList(_teacherApp.GetAll(), "PersonId", "Name");
+            ViewBag.Courses = new SelectList(_courseApp.GetAll(), "CourseId", "Name");
+            ViewBag.Teachers = new SelectList(_teacherApp.GetAll(), "TeacherId", "Name");
             return View();
         }
 
@@ -66,7 +72,7 @@ namespace MagniFinanceTest.MVC.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.Courses = new SelectList(_courseApp.GetAll(), "CourseId", "Name");
-            ViewBag.Teachers = new SelectList(_teacherApp.GetAll(), "PersonId", "Name");
+            ViewBag.Teachers = new SelectList(_teacherApp.GetAll(), "TeacherId", "Name");
 
             var courseSubjects = _courseSubjectsApp.GetById(id);
             var courseSubjectsViewModel = Mapper.Map<CourseSubjects, CourseSubjectsViewModel>(courseSubjects);
@@ -106,6 +112,14 @@ namespace MagniFinanceTest.MVC.Controllers
             _courseSubjectsApp.Remove(courseSubjects);
 
             return RedirectToAction("Index");
+        }
+
+        private IEnumerable<StudentSubjectsViewModel> GetStudentsSubjects(int id)
+        {
+            var students = _studentSubject.FindBySubjectId(id);
+            var studentViewModel = Mapper.Map<IEnumerable<StudentSubjects>, IEnumerable<StudentSubjectsViewModel>>(students);
+
+            return (studentViewModel);
         }
     }
 }

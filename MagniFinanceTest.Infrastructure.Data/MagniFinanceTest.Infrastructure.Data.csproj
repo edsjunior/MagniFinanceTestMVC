@@ -54,7 +54,6 @@
     <Compile Include="Context\MagniFinanceContext.cs" />
     <Compile Include="EntityConfig\CourseConfiguration.cs" />
     <Compile Include="EntityConfig\CourseSubjectsConfiguration.cs" />
-    <Compile Include="EntityConfig\PersonConfiguration.cs" />
     <Compile Include="EntityConfig\StudentsConfiguration.cs" />
     <Compile Include="EntityConfig\StudentsSubjectsConfiguration.cs" />
     <Compile Include="EntityConfig\TeacherConfiguration.cs" />

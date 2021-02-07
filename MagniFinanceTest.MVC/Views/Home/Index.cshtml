@@ -3,29 +3,26 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+	<h1>MagniFinance - Test</h1>
+    <p class="lead">Project in ASP.NET MVC 5 developed following DDD (Domain Driven Design) concepts.</p>
 </div>
 
 <div class="row">
+	<div class="col-md-4">
+		<h2>Courses</h2>
+		<p>
+			List the courses and show the number of teachers, students and average of their grades for each course
+		</p>
+		<p><a href="@Url.Action("Index","Courses")" class="btn btn-info"><spam class="fa fa-book"></spam></a></p>
+	</div>
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <h2>Subjects</h2>
+		<p>List the subjects and show the teacher information, number of students and their grades for each subject.</p>
+		<p><a href="@Url.Action("Index","CourseSubjects")" class="btn btn-info"><spam class="fa fa-copy"></spam></a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Students</h2>
+		<p>List the students and their respectives grades of the subject, see grades when open details of student. </p>
+		<p><a href="@Url.Action("Index","Student")" class="btn btn-info"><spam class="fa fa-user-graduate"></spam></a></p>
     </div>
 </div>

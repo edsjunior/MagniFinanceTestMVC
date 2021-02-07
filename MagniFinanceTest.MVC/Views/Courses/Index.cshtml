@@ -1,45 +1,53 @@
 ﻿@model IEnumerable<MagniFinanceTest.MVC.ViewModels.CourseViewModel>
 
 @{
-    ViewBag.Title = "Index";
+	ViewData["Title"] = "Courses";
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	<a href="@Url.Action("Create")" class="btn btn-info">Create New</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Active)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Active)
-        </td>
-		<td>
-			@Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
-			@Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
-			@Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
-		</td>
-    </tr>
-}
+<table class="table table-hover">
+	<thead class="thead-dark">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th>
+				@Html.DisplayName("Number of Teachers")
+			</th>
+			<th>
+				@Html.DisplayName("Number of Students")
+			</th>
+			<th>
+				@Html.DisplayName("Average Grade")
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CountTeachers)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CountStudents)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CourseAverage)
+			</td>
+			<td class="text-right">
+				<a href="@Url.Action("Edit", new { id = item.CourseId })" class="btn btn-warning"><spam class="fa fa-pencil-alt"></spam></a>
+				<a href="@Url.Action("Details", new { id = item.CourseId })" class="btn btn-info"><spam class="fa fa-book"></spam></a>
+				<a href="@Url.Action("Delete", new { id = item.CourseId })" class="btn btn-danger"><spam class="fa fa-trash"></spam></a>
+			</td>
+		</tr>
+	}
 
 </table>

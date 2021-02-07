@@ -9,7 +9,7 @@ namespace MagniFinanceTest.MVC.ViewModels
 	public class GradeViewModel
 	{
 		[Key]
-		public int Id { get; set; }
+		public int GradeId { get; set; }
 		[Required(ErrorMessage = "Grade value is required")]
 		public int GradeValue { get; set; }
 	}

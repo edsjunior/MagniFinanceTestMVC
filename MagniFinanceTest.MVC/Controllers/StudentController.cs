@@ -7,95 +7,119 @@ using System.Web.Mvc;
 
 namespace MagniFinanceTest.MVC.Controllers
 {
-    public class StudentController : Controller
-    {
-        private readonly IStudentAppService _studentApp;
-        private readonly ICourseAppService _courseApp;
+	public class StudentController : Controller
+	{
+		private readonly IStudentAppService _studentApp;
+		private readonly ICourseAppService _courseApp;
+		private readonly IStudentSubjectsAppService _studentSubject;
 
-        public StudentController(IStudentAppService studentApp, ICourseAppService courseApp)
-        {
-            _studentApp = studentApp;
-            _courseApp = courseApp;
-        }
+		public StudentController(IStudentAppService studentApp, 
+			ICourseAppService courseApp,
+			IStudentSubjectsAppService studentSubjectApp)
+		{
+			_studentApp = studentApp;
+			_courseApp = courseApp;
+			_studentSubject = studentSubjectApp;
+		}
 
-        // GET: Student
-        public ActionResult Index()
-        {
-            var courseViewModel = Mapper.Map<IEnumerable<Student>, IEnumerable<StudentViewModel>>(_studentApp.GetAll());
-            return View(courseViewModel);
-        }
+		// GET: Student
+		public ActionResult Index()
+		{
+			var studentViewModel = Mapper.Map<IEnumerable<Student>, IEnumerable<StudentViewModel>>(_studentApp.GetAll());
 
-        // GET: Student/Details/5
-        public ActionResult Details(int id)
-        {
-            var student = _studentApp.GetById(id);
-            var studentViewModel = Mapper.Map<Student, StudentViewModel>(student);
-            return View(studentViewModel);
-        }
+			foreach (StudentViewModel item in studentViewModel)
+			{
+				item.Average = _studentApp.AverageStudent(item.StudentId);
+			}
 
-        // GET: Student/Create
-        public ActionResult Create()
-        {
-            ViewBag.CourseId = new SelectList(_courseApp.GetAll(), "CourseId", "Name");
-            return View();
-        }
+			return View(studentViewModel);
+		}
 
-        // POST: Student/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentViewModel student)
-        {
-            if (ModelState.IsValid)
-            {
-                var studentDomain = Mapper.Map<StudentViewModel, Student>(student);
-                _studentApp.Add(studentDomain);
+		// GET: Student/Details/5
+		public ActionResult Details(int id)
+		{
+			var student = _studentApp.GetById(id);
+			var studentViewModel = Mapper.Map<Student, StudentViewModel>(student);
 
-                return RedirectToAction("Index");
-            }
-            return View(student);
-        }
+			var average = _studentApp.AverageStudent(id);
+			studentViewModel.Average = average;
 
-        // GET: Student/Edit/5
-        public ActionResult Edit(int id)
-        {
-            ViewBag.CourseId = new SelectList(_courseApp.GetAll(), "CourseId", "Name");
-            var student = _studentApp.GetById(id);
-            var studentViewModel = Mapper.Map<Student, StudentViewModel>(student);
-            return View(studentViewModel);
-        }
+			studentViewModel.StudentSubjects = GetStudentsSubjectsById(id);
 
-        // POST: Student/Edit/5
-        [HttpPost]
-        public ActionResult Edit(StudentViewModel student)
-        {
-            if (ModelState.IsValid)
-            {
-                var studentDomain = Mapper.Map<StudentViewModel, Student>(student);
-                _studentApp.Update(studentDomain);
+			return View(studentViewModel);
+		}
 
-                return RedirectToAction("Index");
-            }
-            return View(student);
-        }
+		// GET: Student/Create
+		public ActionResult Create()
+		{
+			ViewBag.Courses = new SelectList(_courseApp.GetAll(), "CourseId", "Name");
+			return View();
+		}
 
-        // GET: Student/Delete/5
-        public ActionResult Delete(int id)
-        {
-            var student = _studentApp.GetById(id);
-            var studentViewModel = Mapper.Map<Student, StudentViewModel>(student);
+		// POST: Student/Create
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Create(StudentViewModel student)
+		{
+			if (ModelState.IsValid)
+			{
+				var studentDomain = Mapper.Map<StudentViewModel, Student>(student);
+				_studentApp.Add(studentDomain);
 
-            return View(studentViewModel);
-        }
+				return RedirectToAction("Index");
+			}
+			return View(student);
+		}
 
-        // POST: Student/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            var student = _studentApp.GetById(id);
-            _studentApp.Remove(student);
+		// GET: Student/Edit/5
+		public ActionResult Edit(int id)
+		{
+			ViewBag.Courses = new SelectList(_courseApp.GetAll(), "CourseId", "Name");
+			var student = _studentApp.GetById(id);
+			var studentViewModel = Mapper.Map<Student, StudentViewModel>(student);
+			return View(studentViewModel);
+		}
 
-            return RedirectToAction("Index");
-        }
-    }
+		// POST: Student/Edit/5
+		[HttpPost]
+		public ActionResult Edit(StudentViewModel student)
+		{
+			if (ModelState.IsValid)
+			{
+				var studentDomain = Mapper.Map<StudentViewModel, Student>(student);
+				_studentApp.Update(studentDomain);
+
+				return RedirectToAction("Index");
+			}
+			return View(student);
+		}
+
+		// GET: Student/Delete/5
+		public ActionResult Delete(int id)
+		{
+			var student = _studentApp.GetById(id);
+			var studentViewModel = Mapper.Map<Student, StudentViewModel>(student);
+
+			return View(studentViewModel);
+		}
+
+		// POST: Student/Delete/5
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmed(int id)
+		{
+			var student = _studentApp.GetById(id);
+			_studentApp.Remove(student);
+
+			return RedirectToAction("Index");
+		}
+
+		private IEnumerable<StudentSubjectsViewModel> GetStudentsSubjectsById(int id)
+		{
+			var studentsSubjects = _studentSubject.FindByStudentId(id);
+			var studentSubjectsViewModel = Mapper.Map<IEnumerable<StudentSubjects>, IEnumerable<StudentSubjectsViewModel>>(studentsSubjects);
+
+			return (studentSubjectsViewModel);
+		}
+	}
 }

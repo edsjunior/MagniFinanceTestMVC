@@ -8,6 +8,7 @@ namespace MagniFinanceTest.Infrastructure.Data.EntityConfig
 	{
 		public StudentsConfiguration()
 		{
+			HasKey(c => c.StudentId);
 			Property(c => c.RegistrationNumber)
 				.IsRequired();
 			Property(c => c.CourseId)
