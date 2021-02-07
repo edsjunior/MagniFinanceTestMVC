@@ -5,6 +5,7 @@ Developer task for MagniFinance company:
 ### Instructions
 
 - execute in Package Manager Console:
+  - Build solution
   - Update-Database in project MagniFinanceTest.Infrastructure.Data
   - Using (localdb)\MSSQLLocalDB
 ### Possible errors
