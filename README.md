@@ -1,4 +1,4 @@
-## MagniFinanceTestMVC
+## MagniFinance Test MVC 5 + DDD
 
 Developer task for MagniFinance company:
 
