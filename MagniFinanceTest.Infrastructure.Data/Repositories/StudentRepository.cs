@@ -14,7 +14,18 @@ namespace MagniFinanceTest.Infrastructure.Data.Repositories
 
 		public double AverageStudent(int id)
 		{
-			return Db.StudentsSubjects.Where(c => c.StudentId == id).Average(c => c.Grade.GradeValue);
+			
+			IEnumerable<StudentSubjects> evaluation = Db.StudentsSubjects.Where(c => c.StudentId == id);
+			if (evaluation.Count() > 0)
+			{
+				return Db.StudentsSubjects
+				.Where(c => c.StudentId == id)
+				.Average(c => c.Grade.GradeValue);
+			} else
+			{
+				return 0;
+			}
+			
 		}
 
 		public int CountStudentsByCourse(int id)

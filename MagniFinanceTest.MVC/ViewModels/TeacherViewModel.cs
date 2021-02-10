@@ -13,6 +13,7 @@ namespace MagniFinanceTest.MVC.ViewModels
 
 		[Required(ErrorMessage = "Birthday is required")]
 		[DataType(DataType.Date)]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 		public DateTime Birthday { get; set; }
 
 		[DataType(DataType.Currency)]
